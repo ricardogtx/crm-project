@@ -16,6 +16,7 @@ local.properties
 .recommenders
 .classpath
 .project
+.tool-versions
 
 # External tool builders
 .externalToolBuilders/
@@ -76,6 +77,7 @@ local.properties
 
 # Log file
 *.log
+logfile
 
 # BlueJ files
 *.ctxt
@@ -98,5 +100,7 @@ hs_err_pid*
 ### Vaadin ###
 .vaadin-designer
 .designer
+node_modules
 
 # End of https://www.toptal.com/developers/gitignore/api/java,vaadin,eclipse
+/target/
