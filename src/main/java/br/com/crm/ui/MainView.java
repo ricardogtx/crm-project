@@ -10,6 +10,7 @@ import com.vaadin.flow.router.Route;
 
 import br.com.crm.backend.entity.Company;
 import br.com.crm.backend.entity.Contact;
+import br.com.crm.backend.service.CompanyService;
 import br.com.crm.backend.service.ContactService;
 
 @Route("")
@@ -20,31 +21,31 @@ public class MainView extends VerticalLayout {
 	private TextField filterText = new TextField();
 	private ContactForm form;
 
-	public MainView(ContactService contactService) {
+	public MainView(ContactService contactService, CompanyService companyService) {
 		this.contactService = contactService;
 		addClassName("list-view");
 		setSizeFull();
-		
+
 		configureGrid();
 		configureFilter();
-		
-		form = new ContactForm();
-		
-		Div content = new Div(grid,form);
+
+		form = new ContactForm(companyService.findAll());
+
+		Div content = new Div(grid, form);
 		content.addClassName("content");
 		content.setSizeFull();
-		
+
 		add(filterText, content);
 		updateList();
 	}
 
 	private void configureFilter() {
-		filterText.setPlaceholder("Filter by name..."); 
+		filterText.setPlaceholder("Filter by name...");
 		filterText.setClearButtonVisible(true);
 		filterText.setValueChangeMode(ValueChangeMode.LAZY);
 		filterText.addValueChangeListener(e -> updateList());
 	}
-	
+
 	private void configureGrid() {
 		grid.addClassName("contact-grid");
 		grid.setSizeFull();
