@@ -1,4 +1,4 @@
-package br.com.crm.ui;
+package br.com.crm.ui.view.list;
 
 import java.util.List;
 
